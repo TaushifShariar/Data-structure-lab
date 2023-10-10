@@ -1,0 +1,89 @@
+#include <iostream>
+ using namespace std;
+
+  struct student
+  {
+      int id,semister_completed, credit_completed;
+      float cgpa;
+
+
+  };
+  int main()
+  {
+
+
+
+     struct student s[10];
+      cout<< "enter student details"<< endl;
+
+      s[1].id =1167;
+      s[1].semister_completed =4;
+      s[1].credit_completed =11;
+      s[1].cgpa =3.47;
+
+      s[2].id =1189;
+      s[2].semister_completed =6;
+      s[2].credit_completed =14;
+      s[2].cgpa =3.21;
+
+      s[3].id =1178;
+      s[3].semister_completed =9;
+      s[3].credit_completed =20;
+      s[3].cgpa =3.36;
+
+      s[4].id =1144;
+      s[4].semister_completed =9;
+      s[4].credit_completed =71;
+      s[4].cgpa =3.87;
+
+      s[5].id =1155;
+      s[5].semister_completed =5;
+      s[5].credit_completed =51;
+      s[5].cgpa =3.336;
+
+      s[6].id =1110;
+      s[6].semister_completed =13;
+      s[6].credit_completed =20;
+      s[6].cgpa =3.82;
+
+      s[7].id =1149;
+      s[7].semister_completed =3;
+      s[7].credit_completed =62;
+      s[7].cgpa =3.81;
+
+      s[8].id =1169;
+      s[8].semister_completed =10;
+      s[8].credit_completed =24;
+      s[8].cgpa =3.21;
+
+      s[9].id =1191;
+      s[9].semister_completed =23;
+      s[9].credit_completed =17;
+      s[9].cgpa =3.14;
+
+      s[10].id =1152;
+      s[10].semister_completed =11;
+      s[10].credit_completed =57;
+      s[10].cgpa =3.19;
+
+
+      
+  }
+  for(int i=0;i<10;i++)
+   {
+       if(s[i].cgpa > 3.75)
+       {
+            cout<<s[i].id<<endl;
+       }
+   }
+
+   cout<<"\nStudent ID who have completed more than 50 credits : ";
+   for(int i=0;i<10;i++)
+   {
+       if(s[i].credit_completed> 50)
+       {
+            cout<<s[i].credit_completed<<endl;
+       }
+   }
+   cout<<endl;
+   return 0;
