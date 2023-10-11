@@ -1,0 +1,80 @@
+
+#include <iostream>
+
+
+using namespace std ;
+
+
+
+struct ACCOUNT_BANK {
+    int accNumber;
+    string AccHolderName;
+    float accBalance;
+};
+
+void deposit(ACCOUNT_BANK account, double amount) {
+    if (amount > 0) {
+        account.accBalance += amount;
+        cout << "Deposited Taka" << amount << " into the account." << endl;
+    } else {
+        cout << "Invalid deposit amount." << endl;
+    }
+}
+
+void withdraw(ACCOUNT_BANK account, double amount) {
+    if (amount > 0 && amount <= account.accBalance) {
+        account.accBalance -= amount;
+        cout << "Withdrawn Taka" << amount << " from the account." << endl;
+    } else {
+        cout << "Invalid withdrawal amount or insufficient accBalance." << endl;
+    }
+}
+
+void displayAccountdetails( ACCOUNT_BANK account) {
+    cout << "Account Number: " << account.accNumber << endl;
+    cout << "Account Holder Name: " << account.AccHolderName << endl;
+    cout << "accBalance: Taka" << account.accBalance << endl;
+}
+
+int main() {
+    ACCOUNT_BANK newAccount;
+    newAccount.accNumber = 1234;
+    newAccount.AccHolderName = "S";
+    newAccount.accBalance = 10000.0;
+
+    int choice;
+    double amount;
+
+    while (true) {
+        cout << "Choose an option:" << endl;
+        cout << "1. Deposit" << endl;
+        cout << "2. Withdraw" << endl;
+        cout << "3. Display Account Details" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter the deposit amount: Taka";
+                cin >> amount;
+                deposit(newAccount, amount);
+                break;
+            case 2:
+                cout << "Enter the withdrawal amount: Taka";
+                cin >> amount;
+                withdraw(newAccount, amount);
+                break;
+            case 3:
+                displayAccountdetails(newAccount);
+                break;
+            case 4:
+                cout << "Exiting program." << endl;
+                return 0;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    }
+
+    return 0;
+}
