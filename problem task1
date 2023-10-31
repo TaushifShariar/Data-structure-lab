@@ -1,0 +1,63 @@
+#include <iostream>
+#include <climits>
+#include <cstdlib>
+
+using namespace std;
+
+void customSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = i + 1; j < size; ++j) {
+            if (arr[i] > arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+pair<int, int> findElementsNearestToZero(int arr[], int size) {
+    if (size < 2) {
+        return make_pair(INT_MAX, INT_MAX);
+    }
+
+    customSort(arr, size);
+
+    int left = 0;
+    int right = size - 1;
+
+    int minSum = INT_MAX;
+    pair<int, int> result;
+
+    while (left < right) {
+        int currentSum = arr[left] + arr[right];
+
+        if (abs(currentSum) < abs(minSum)) {
+            minSum = currentSum;
+            result = make_pair(arr[left], arr[right]);
+        }
+
+        if (currentSum < 0) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    int arr[10];
+
+    // Taking user input for the array
+    cout << "Enter 10 elements for the array: ";
+    for (int i = 0; i < 10; ++i) {
+        cin >> arr[i];
+    }
+
+    pair<int, int> result = findElementsNearestToZero(arr, 10);
+    cout << "Two elements with the sum nearest to zero: " << result.first << " and " << result.second << endl;
+
+    return 0;
+}
